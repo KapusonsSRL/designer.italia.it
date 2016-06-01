@@ -3,11 +3,14 @@
 'use strict';
 
 (function ($, undefined) {
+  $(document).ready(function () {
+    $('html').removeClass('no-js');
+  });
 
   /* @FIXME: Pre examples (hack)
    * ---------------------------
    *  Converte gli esempi markdown / html e crea un div "collapsible"
-   *  per mostrare / nascondere il codice 
+   *  per mostrare / nascondere il codice
    */
   $('pre').each(function doExample() {
     doExample.count = doExample.count ? doExample.count + 1 : 1;
@@ -34,6 +37,14 @@
       e.preventDefault();
       $('.row-offcanvas').toggleClass('active');
       $(this).toggleClass('active');
+    });
+  });
+
+  $(document).ready(function() {
+    $('.row-offcanvas').click(function(e){
+      if ($(this).is('.active')) {
+        $(this).removeClass('active');
+      }
     });
   });
 
@@ -184,7 +195,7 @@
 
   /* Navigation menu */
 
-  $(function(){ 
+  $(function(){
 
     /* iterate through nested list */
 
@@ -199,15 +210,15 @@
         /* Clear all open and not nested element  */
         if(!$(this).closest('li.open').length){
           $('.navmenu ul').slideUp(300);
-          $('.navmenu li').removeClass('open');   
+          $('.navmenu li').removeClass('open');
         }
 
         if(node.siblings('ul').is(':visible')){
           node.siblings('ul').slideUp(300);
-          node.parent().removeClass('open'); 
+          node.parent().removeClass('open');
         }else{
           node.siblings('ul').slideDown(300);
-          node.parent().addClass('open'); 
+          node.parent().addClass('open');
         }
       })
       .on('keydown', function (e) {
@@ -234,4 +245,3 @@
 
 
 })(jQuery);
-
