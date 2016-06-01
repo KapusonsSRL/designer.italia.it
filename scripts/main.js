@@ -215,19 +215,19 @@
           $(this).click();
           return false;
         }
-      })
+      });
       itemLink.append(trigger);
     });
 
 
     /* Get current element and set their ancestors as active */
 
-    var $current = $('.navmenu a[href=\'' + window.location.pathname + '\'], ' +
+    $('.navmenu a[href=\'' + window.location.pathname + '\'], ' +
         '.navmenu a[href=\'' + window.location.pathname.slice(0, -1) + '\']')
         .addClass('current');
 
     $('.navmenu .current').parents().filter(function(index){
-      return (this.nodeName == 'LI');
+      return (this.nodeName === 'LI');
     }).addClass('active open');
 
   });
